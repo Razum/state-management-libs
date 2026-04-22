@@ -1,0 +1,23 @@
+.card:hover img {
+  filter: drop-shadow(0 4px 10px rgba(255, 0, 150, 0.6))
+    drop-shadow(0 -4px 10px rgba(0, 200, 255, 0.6));
+}
+
+.image {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  padding: 1rem;
+  transition: filter 0.3s ease;
+}
+
+.link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  text-align: center;
+}

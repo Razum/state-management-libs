@@ -1,0 +1,228 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "error",
+    "pedantic": "warn",
+    "style": "off",
+    "restriction": "off",
+    "nursery": "off"
+  },
+
+  "plugins": [
+    "oxc",
+    "typescript",
+    "unicorn",
+    "import",
+    "react",
+    "react-perf",
+    "promise",
+    "jsx-a11y"
+  ],
+
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true
+  },
+
+  "globals": {},
+
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/coverage/**",
+    ".next/**",
+    ".vercel/**",
+    "out/**",
+    "**/*.min.*",
+    "**/*.generated.*",
+    "**/*.snap"
+  ],
+
+  "rules": {
+    "no-alert": "error",
+    "no-console": "error",
+    "no-var": "error",
+    "eqeqeq": ["error", "always"],
+    "no-empty": ["error", { "allowEmptyCatch": false }],
+    "no-unused-expressions": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "prefer-const": "error",
+    "no-useless-rename": "error",
+    "object-shorthand": "warn",
+    "prefer-template": "warn",
+    "no-lonely-if": "warn",
+
+    "arrow-body-style": "off",
+    "sort-imports": "off",
+    "sort-keys": "off",
+    "no-magic-numbers": "off",
+    "max-lines-per-function": "off",
+    "no-ternary": "off",
+    "id-length": "off",
+    "no-namespace": "off",
+    "no-negated-condition": "off",
+    "no-nested-ternary": "off",
+
+    "no-await-in-loop": "error",
+    "no-promise-executor-return": "error",
+    "no-constructor-return": "error",
+    "no-self-compare": "error",
+    "no-template-curly-in-string": "error",
+    "no-unmodified-loop-condition": "error",
+    "no-useless-call": "error",
+
+    "no-duplicate-imports": "off",
+    "import/no-cycle": "error",
+    "import/no-absolute-path": "error",
+    "import/no-self-import": "error",
+    "import/no-duplicates": "error",
+    "import/no-empty-named-blocks": "error",
+    "import/no-mutable-exports": "error",
+    "import/first": "error",
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+    "import/max-dependencies": "off",
+    "import/no-named-export": "off",
+    "import/no-nodejs-modules": "off",
+    "import/no-default-export": "off",
+    "no-unassigned-import": "off",
+
+    "react/jsx-key": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/no-unknown-property": "error",
+    "react/no-danger-with-children": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/void-dom-elements-no-children": "error",
+    "react/exhaustive-deps": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/no-children-prop": "off",
+    "react/jsx-no-useless-fragment": "error",
+    "react/self-closing-comp": "warn",
+    "react/jsx-boolean-value": "warn",
+    "react/no-array-index-key": "warn",
+    "react/no-danger": "warn",
+    "react/hook-use-state": "error",
+    "react/jsx-max-depth": "off",
+
+    "react_perf/jsx-no-new-function-as-prop": "off",
+    "react_perf/jsx-no-new-object-as-prop": "off",
+    "react_perf/jsx-no-new-array-as-prop": "off",
+    "react_perf/jsx-no-jsx-as-prop": "off",
+
+    "promise/no-return-wrap": "error",
+    "promise/always-return": "warn",
+    "promise/no-nesting": "warn",
+    "promise/no-new-statics": "error",
+
+    "unicorn/no-useless-spread": "error",
+    "unicorn/no-unnecessary-await": "error",
+    "unicorn/no-new-array": "error",
+    "unicorn/prefer-string-starts-ends-with": "error",
+    "unicorn/prefer-set-size": "error",
+    "unicorn/prefer-node-protocol": "error",
+    "unicorn/no-useless-fallback-in-spread": "error",
+    "unicorn/no-useless-promise-resolve-reject": "error",
+    "unicorn/prefer-array-some": "error",
+    "unicorn/prefer-includes": "warn",
+    "unicorn/throw-new-error": "error",
+    "unicorn/no-null": "off",
+    "unicorn/no-useless-undefined": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/no-empty-file": "off",
+    "unicorn/filename-case": "off",
+
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/no-implied-eval": "error",
+    "typescript/no-base-to-string": "error",
+    "typescript/no-non-null-assertion": "warn",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-useless-empty-export": "error",
+    "typescript/restrict-template-expressions": [
+      "error",
+      { "allowNumber": true, "allowBoolean": true }
+    ],
+    "typescript/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports",
+        "fixStyle": "separate-type-imports"
+      }
+    ],
+    "typescript/consistent-type-exports": "error",
+    "typescript/no-unnecessary-type-assertion": "error",
+    "typescript/no-confusing-non-null-assertion": "error",
+    "typescript/no-unsafe-function-type": "error",
+    "typescript/no-wrapper-object-types": "error",
+    "typescript/prefer-as-const": "error",
+    "typescript/prefer-literal-enum-member": "error",
+    "typescript/prefer-optional-chain": "error",
+    "typescript/prefer-includes": "warn",
+    "typescript/explicit-function-return-type": "off",
+    "typescript/explicit-module-boundary-types": "off",
+
+    "jsx-a11y/alt-text": "error",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/anchor-has-content": "error",
+    "jsx-a11y/aria-props": "error",
+    "jsx-a11y/aria-role": "error",
+    "jsx-a11y/heading-has-content": "error",
+    "jsx-a11y/no-redundant-roles": "error",
+    "jsx-a11y/role-has-required-aria-props": "error"
+  },
+
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "plugins": ["typescript"],
+      "rules": {
+        "typescript/no-confusing-void-expression": "error",
+        "typescript/no-unnecessary-parameter-property-assignment": "error",
+        "typescript/prefer-as-const": "error"
+      }
+    },
+    {
+      "files": ["**/*.d.ts"],
+      "rules": {
+        "unicorn/no-empty-file": "off",
+        "typescript/consistent-type-imports": "off",
+        "import/no-default-export": "off"
+      }
+    },
+    {
+      "files": [
+        "vite.config.*",
+        "*.config.{ts,js,mjs,cjs}",
+        "scripts/**/*.{js,ts}",
+        "tools/**/*.{js,ts}"
+      ],
+      "rules": {
+        "no-console": "off",
+        "import/no-nodejs-modules": "off",
+        "import/no-default-export": "off",
+        "typescript/no-floating-promises": "off"
+      }
+    }
+  ],
+
+  "settings": {
+    "react": {
+      "linkComponents": [{ "name": "Link", "linkAttribute": ["href", "to"] }]
+    },
+    "jsx-a11y": {
+      "components": {
+        "Button": "button"
+      }
+    }
+  }
+}

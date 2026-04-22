@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "trailingComma": "none",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "ignorePatterns": ["**/node_modules/**", "**/dist/**", "**/build/**", "pnpm-lock.yaml"],
+  "sortImports": {
+    "newlinesBetween": true,
+    "internalPattern": ["@/**"],
+    "customGroups": [
+      {
+        "groupName": "react-libs",
+        "elementNamePattern": ["react", "react-*", "react-dom", "react-dom/**"]
+      }
+    ],
+    "groups": [
+      "type-import",
+      "react-libs",
+      ["value-builtin", "value-external"],
+      "type-internal",
+      "value-internal",
+      ["type-parent", "type-sibling", "type-index"],
+      ["value-parent", "value-sibling", "value-index"],
+      "style",
+      "unknown"
+    ]
+  },
+  "sortPackageJson": {
+    "sortScripts": true
+  }
+}

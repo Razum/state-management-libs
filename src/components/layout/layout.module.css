@@ -1,0 +1,30 @@
+.layout {
+  min-height: 100dvh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  background: var(--ant-cyan-10);
+  color: var(--ant-color-white);
+  padding: 0 1.5rem;
+}
+
+.header a {
+  color: var(--ant-color-white);
+  text-decoration: none;
+}
+
+.footer {
+  height: 10rem;
+  background: var(--ant-cyan-10);
+  color: var(--ant-color-white);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.content {
+  padding: 1.5rem;
+  min-height: calc(100dvh - 15rem);
+}

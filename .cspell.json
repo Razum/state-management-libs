@@ -1,0 +1,32 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "dist-ssr",
+    ".pnpm-store",
+    "pnpm-lock.yaml",
+    "package-lock.json",
+    "yarn.lock",
+    "public",
+    "coverage",
+    ".github"
+  ],
+  "dictionaries": ["typescript", "node", "html", "css", "npm", "react", "fonts"],
+  "words": [
+    "antd",
+    "Appstore",
+    "hoverable",
+    "jotai",
+    "mobx",
+    "oxfmt",
+    "oxlint",
+    "tanstack",
+    "tsconfig",
+    "valibot",
+    "valtio",
+    "vite",
+    "zustand"
+  ]
+}
