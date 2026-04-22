@@ -1,8 +1,10 @@
 import type { ProductType } from '@/pages/zustand/zustand.types';
 
+import { useMemo } from 'react';
+
 import useZustandStore from '@/pages/zustand/zustand.store';
 import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import { Drawer, List, Typography, Button, Space, Empty, Divider } from 'antd';
+import { App, Button, Divider, Drawer, Empty, List, Space, Typography } from 'antd';
 import { useShallow } from 'zustand/react/shallow';
 
 import styles from '@/pages/zustand/components/cart-drawer/cart-drawer.module.css';
@@ -10,15 +12,18 @@ import styles from '@/pages/zustand/components/cart-drawer/cart-drawer.module.cs
 const { Text } = Typography;
 
 const CartDrawer = () => {
-  const { cart, isDrawerOpen, removeProduct, clearProducts, closeDrawer } = useZustandStore(
+  const { message } = App.useApp();
+  const { cart, clearProducts, closeDrawer, isDrawerOpen, removeProduct } = useZustandStore(
     useShallow((state) => ({
       cart: state.cart,
-      isDrawerOpen: state.isDrawerOpen,
-      removeProduct: state.removeProduct,
       clearProducts: state.clearProducts,
-      closeDrawer: state.closeDrawer
+      closeDrawer: state.closeDrawer,
+      isDrawerOpen: state.isDrawerOpen,
+      removeProduct: state.removeProduct
     }))
   );
+
+  const total = useMemo(() => cart.reduce((sum, product) => sum + product.price, 0), [cart]);
 
   const handleRemoveProduct = (product: ProductType) => {
     removeProduct(product);
@@ -28,30 +33,32 @@ const CartDrawer = () => {
     clearProducts();
   };
 
-  const calculateTotal = () => cart.reduce((total, product) => total + product.price, 0);
+  const handleCheckout = () => {
+    message.success('Order placed (demo)');
+  };
 
   return (
     <Drawer
+      extra={
+        cart.length > 0 ? (
+          <Button danger size="small" onClick={handleClearCart}>
+            Clear all
+          </Button>
+        ) : undefined
+      }
+      onClose={closeDrawer}
+      open={isDrawerOpen}
+      placement="right"
       title={
         <Space>
           <ShoppingCartOutlined />
           <span>Cart ({cart.length})</span>
         </Space>
       }
-      placement="right"
-      onClose={closeDrawer}
-      open={isDrawerOpen}
       width={400}
-      extra={
-        cart.length > 0 && (
-          <Button onClick={handleClearCart} danger size="small">
-            Clear All
-          </Button>
-        )
-      }
     >
       {cart.length === 0 ? (
-        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Your cart is empty" />
+        <Empty description="Your cart is empty" image={Empty.PRESENTED_IMAGE_SIMPLE} />
       ) : (
         <>
           <List
@@ -60,26 +67,27 @@ const CartDrawer = () => {
               <List.Item
                 actions={[
                   <Button
-                    shape="circle"
-                    size="middle"
                     key="remove"
+                    aria-label={`Remove ${product.name} from cart`}
                     danger
                     icon={<DeleteOutlined />}
+                    shape="circle"
+                    size="middle"
                     onClick={() => handleRemoveProduct(product)}
                   />
                 ]}
               >
-                <List.Item.Meta title={product.name} description={`$${product.price.toFixed(2)}`} />
+                <List.Item.Meta description={`$${product.price.toFixed(2)}`} title={product.name} />
               </List.Item>
             )}
           />
           <Divider />
-          <Space direction="vertical" className={styles.space}>
+          <Space className={styles.space} direction="vertical">
             <div className={styles.total}>
-              <Text strong>Total:</Text>
-              <Text strong>${calculateTotal().toFixed(2)}</Text>
+              <Text strong>Total</Text>
+              <Text strong>${total.toFixed(2)}</Text>
             </div>
-            <Button type="primary" block size="large">
+            <Button block size="large" type="primary" onClick={handleCheckout}>
               Checkout
             </Button>
           </Space>

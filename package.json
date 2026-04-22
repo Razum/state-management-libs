@@ -9,7 +9,8 @@
     "lint": "oxfmt --check && oxlint",
     "lint:fix": "oxfmt && oxlint --fix",
     "preview": "vite preview",
-    "spell": "cspell --no-progress --no-summary \"**/*.{ts,tsx,js,jsx,md,json,css,html}\""
+    "spell": "cspell --no-progress --no-summary \"**/*.{ts,tsx,js,jsx,md,json,css,html}\"",
+    "validate": "pnpm run spell && pnpm run lint"
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.1",

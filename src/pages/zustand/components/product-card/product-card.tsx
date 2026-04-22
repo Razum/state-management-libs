@@ -1,44 +1,56 @@
 import type { ProductType } from '@/pages/zustand/zustand.types';
 
-import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Card, Button, Typography, Space } from 'antd';
+import { GiftOutlined, ShoppingOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { Button, Card, Space, Typography } from 'antd';
 
 import styles from '@/pages/zustand/components/product-card/product-card.module.css';
 
-const { Title, Text } = Typography;
+const { Text, Title } = Typography;
+
+const DECOR = [ShoppingOutlined, GiftOutlined, ThunderboltOutlined] as const;
+
+const pickDecor = (product: ProductType) => {
+  const n = (Number.parseInt(product.id, 10) + product.name.length) % DECOR.length;
+  return DECOR.at(n) ?? ShoppingOutlined;
+};
 
 interface ProductCardProps {
-  product: ProductType;
-  onAddToCart: (product: ProductType) => void;
   inCart: boolean;
+  onCartAction: (product: ProductType) => void;
+  product: ProductType;
 }
 
-const ProductCard = ({ product, onAddToCart, inCart }: ProductCardProps) => {
-  const handleAddToCart = () => {
-    onAddToCart(product);
-  };
-
+const ProductCard = ({ inCart, onCartAction, product }: ProductCardProps) => {
+  const DecorIcon = pickDecor(product);
   return (
     <Card
-      hoverable
-      className={styles.card}
       actions={[
         <Button
-          key="add-to-cart"
+          key="cart"
+          danger={inCart}
+          icon={<ShoppingOutlined />}
           type={inCart ? 'default' : 'primary'}
-          icon={<ShoppingCartOutlined />}
-          onClick={handleAddToCart}
-          disabled={inCart}
+          onClick={() => onCartAction(product)}
         >
-          {inCart ? 'In Cart' : 'Add to Cart'}
+          {inCart ? 'Remove' : 'Add to cart'}
         </Button>
       ]}
+      className={styles.card}
+      hoverable
     >
-      <Space direction="vertical" size="small" className={styles.content}>
-        <Title level={4}>{product.name}</Title>
-        <Text strong className={styles.price}>
-          ${product.price.toFixed(2)}
+      <div aria-hidden className={styles.thumb}>
+        <DecorIcon className={styles.thumbIcon} />
+      </div>
+      <Space className={styles.content} direction="vertical" size="small">
+        <Text className={styles.name} strong>
+          {product.name}
         </Text>
+        <Text className={styles.tagline} ellipsis type="secondary">
+          {product.tagline}
+        </Text>
+        <Title className={styles.price} level={4}>
+          ${product.price.toFixed(2)}
+        </Title>
       </Space>
     </Card>
   );

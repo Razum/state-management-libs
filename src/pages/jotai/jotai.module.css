@@ -1,7 +1,43 @@
-.searchInput {
-  width: 33%;
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.addUserButton {
-  margin-left: auto;
+.pageHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.searchInput {
+  flex: 1 1 12rem;
+  min-width: 0;
+  max-width: 20rem;
+}
+
+@media (min-width: 768px) {
+  .searchInput {
+    flex: 0 0 20rem;
+    max-width: 20rem;
+  }
+}
+
+.toolbarActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  min-width: 0;
+  flex: 1 1 auto;
 }

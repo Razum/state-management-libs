@@ -3,13 +3,17 @@ import { Input } from 'antd';
 import { useAtom } from 'jotai';
 
 interface UserSearchProps {
+  allowClear?: boolean;
+  'aria-label'?: string;
   className?: string;
 }
 
-const UserSearch = ({ className }: UserSearchProps) => {
+const UserSearch = ({ allowClear, 'aria-label': ariaLabel, className }: UserSearchProps) => {
   const [usersSearch, setUsersSearch] = useAtom(usersSearchAtom);
   return (
     <Input
+      allowClear={allowClear}
+      aria-label={ariaLabel ?? 'Search users by name'}
       className={className}
       placeholder="Search by name"
       value={usersSearch}

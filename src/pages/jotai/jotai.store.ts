@@ -8,7 +8,10 @@ const usersAtom = atom(users);
 const usersSearchAtom = atom('');
 
 const usersManagerAtom = atom(
-  (get) => get(usersAtom).filter((user) => user.name.includes(get(usersSearchAtom))),
+  (get) =>
+    get(usersAtom).filter((user) =>
+      user.name.toLowerCase().includes(get(usersSearchAtom).trim().toLowerCase())
+    ),
   (get, set, newUser: UserType | UserDataType) => {
     if ('id' in newUser) {
       set(

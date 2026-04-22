@@ -1,0 +1,25 @@
+.hero {
+  margin-bottom: 2rem;
+  max-width: 42rem;
+}
+
+.hero h1 {
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.tagline {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: var(--ant-font-size-sm);
+}
+
+.row {
+  margin-top: 0.5rem;
+}

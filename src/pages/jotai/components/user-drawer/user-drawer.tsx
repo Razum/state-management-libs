@@ -1,16 +1,49 @@
-import type { UserDataType } from '@/pages/jotai/jotai.types';
+import type { UserDataType, UserType } from '@/pages/jotai/jotai.types';
 
-import UserForm from '@/pages/jotai/components/user-form';
+import {
+  handleJotaiFormEvent,
+  useJotaiUserForm,
+  UserFormFields,
+  UserFormFooter
+} from '@/pages/jotai/components/user-form';
 import { selectedUserAtom, userDrawerAtom, usersManagerAtom } from '@/pages/jotai/jotai.store';
 import { Drawer } from 'antd';
 import { useAtom } from 'jotai';
 
+const UserFormWithDrawer = ({
+  onClose,
+  onSubmit,
+  user
+}: {
+  onClose: () => void;
+  onSubmit: (data: UserDataType, userId?: string) => void;
+  user?: UserType;
+}) => {
+  const { form, formId } = useJotaiUserForm({ onSubmit, user });
+  return (
+    <Drawer
+      closable={{ 'aria-label': 'Close drawer' }}
+      destroyOnClose
+      footer={<UserFormFooter form={form} formId={formId} />}
+      onClose={onClose}
+      open
+      size="large"
+      title={user ? 'Edit user' : 'Add user'}
+    >
+      <form id={formId} noValidate onSubmit={(e) => handleJotaiFormEvent(form, e)}>
+        <UserFormFields form={form} />
+      </form>
+    </Drawer>
+  );
+};
+
 const UserDrawer = () => {
   const [isUserDrawerOpen, setIsUserDrawerOpen] = useAtom(userDrawerAtom);
-  const [selectedUser] = useAtom(selectedUserAtom);
+  const [selectedUser, setSelectedUser] = useAtom(selectedUserAtom);
   const [, manageUser] = useAtom(usersManagerAtom);
   const handleClose = () => {
     setIsUserDrawerOpen(false);
+    setSelectedUser(undefined);
   };
 
   const handleSubmit = (data: UserDataType, userId?: string) => {
@@ -22,17 +55,14 @@ const UserDrawer = () => {
     handleClose();
   };
 
-  return (
-    <Drawer
-      title="Basic Drawer"
-      closable={{ 'aria-label': 'Close Button' }}
+  return isUserDrawerOpen ? (
+    <UserFormWithDrawer
+      key={selectedUser?.id ?? 'add'}
       onClose={handleClose}
-      open={isUserDrawerOpen}
-      size="large"
-    >
-      <UserForm onSubmit={handleSubmit} user={selectedUser} />
-    </Drawer>
-  );
+      onSubmit={handleSubmit}
+      user={selectedUser}
+    />
+  ) : null;
 };
 
 export default UserDrawer;

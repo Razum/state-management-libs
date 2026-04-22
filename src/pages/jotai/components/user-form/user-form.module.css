@@ -1,0 +1,28 @@
+.numberInput {
+  width: 100%;
+}
+
+.penaltyItem {
+  margin-bottom: 0;
+}
+
+.penaltyBlock {
+  width: 100%;
+}
+
+.penaltyValueRow {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.penaltyInput {
+  max-width: 12rem;
+}
+
+.muted {
+  color: var(--ant-color-text-tertiary);
+  font-weight: 400;
+}
