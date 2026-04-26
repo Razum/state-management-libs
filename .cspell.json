@@ -28,6 +28,7 @@
     "valibot",
     "valtio",
     "vite",
-    "zustand"
+    "zustand",
+    "pickList"
   ]
 }
