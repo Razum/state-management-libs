@@ -24,7 +24,7 @@ const Home = () => (
           description="MobX-style observables and actions. Placeholder route until a demo is added."
           href="/mobx"
           image={mobxImage}
-          status="coming-soon"
+          status="implemented"
           title="MobX"
         />
       </Col>
