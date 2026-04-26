@@ -2,6 +2,7 @@ import Layout from '@/components/layout';
 import Home from '@/pages/home';
 import Jotai from '@/pages/jotai';
 import MobX from '@/pages/mobx';
+import Valtio from '@/pages/valtio';
 import Zustand from '@/pages/zustand';
 import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
 
@@ -33,7 +34,19 @@ const JotaiRoute = createRoute({
   component: Jotai
 });
 
-const routeTree = rootRoute.addChildren([IndexRoute, MobXRoute, ZustandRoute, JotaiRoute]);
+const ValtioRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/valtio',
+  component: Valtio
+});
+
+const routeTree = rootRoute.addChildren([
+  IndexRoute,
+  MobXRoute,
+  ZustandRoute,
+  JotaiRoute,
+  ValtioRoute
+]);
 
 declare module '@tanstack/react-router' {
   interface Register {

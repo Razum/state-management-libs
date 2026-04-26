@@ -1,5 +1,6 @@
 import jotaiImage from '@/assets/images/jotai.png';
 import mobxImage from '@/assets/images/mobx.png';
+import valtioImage from '@/assets/images/valtio.png';
 import zustandImage from '@/assets/images/zustand.png';
 import LinkCard from '@/pages/home/components/link-card';
 import { Col, Row, Typography } from 'antd';
@@ -19,7 +20,7 @@ const Home = () => (
     </header>
 
     <Row className={styles.row} gutter={[16, 16]}>
-      <Col lg={8} sm={12} xs={24}>
+      <Col lg={6} sm={12} xs={24}>
         <LinkCard
           description="MobX-style observables and actions. Placeholder route until a demo is added."
           href="/mobx"
@@ -28,7 +29,7 @@ const Home = () => (
           title="MobX"
         />
       </Col>
-      <Col lg={8} sm={12} xs={24}>
+      <Col lg={6} sm={12} xs={24}>
         <LinkCard
           description="A tiny, flexible store with a cart and product grid — great for app-wide state."
           href="/zustand"
@@ -37,13 +38,22 @@ const Home = () => (
           title="Zustand"
         />
       </Col>
-      <Col lg={8} sm={12} xs={24}>
+      <Col lg={6} sm={12} xs={24}>
         <LinkCard
           description="Bottom-up state with Jotai atoms, forms, and list vs. tile views in one page."
           href="/jotai"
           image={jotaiImage}
           status="implemented"
           title="Jotai"
+        />
+      </Col>
+      <Col lg={6} sm={12} xs={24}>
+        <LinkCard
+          description="A lightweight proxy-based state model. Placeholder route until a focused demo is added."
+          href="/valtio"
+          image={valtioImage}
+          status="implemented"
+          title="Valtio"
         />
       </Col>
     </Row>

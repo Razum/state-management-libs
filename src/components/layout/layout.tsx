@@ -58,6 +58,11 @@ export const Layout = () => {
                   icon: <AppstoreOutlined />,
                   key: '/mobx',
                   label: <Link to="/mobx">MobX</Link>
+                },
+                {
+                  icon: <AppstoreOutlined />,
+                  key: '/valtio',
+                  label: <Link to="/valtio">Valtio</Link>
                 }
               ]}
               mode="horizontal"

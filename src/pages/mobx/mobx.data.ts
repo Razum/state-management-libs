@@ -1,5 +1,6 @@
-import { TaskStatus } from './mobx.types';
 import type { TaskType } from './mobx.types';
+
+import { TaskStatus } from './mobx.types';
 
 export const initialTasks: TaskType[] = [
   {
