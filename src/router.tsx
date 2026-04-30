@@ -2,6 +2,7 @@ import Layout from '@/components/layout';
 import Home from '@/pages/home';
 import Jotai from '@/pages/jotai';
 import MobX from '@/pages/mobx';
+import TanStack from '@/pages/tanstack';
 import Valtio from '@/pages/valtio';
 import Zustand from '@/pages/zustand';
 import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
@@ -40,12 +41,19 @@ const ValtioRoute = createRoute({
   component: Valtio
 });
 
+const TanStackRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/tanstack',
+  component: TanStack
+});
+
 const routeTree = rootRoute.addChildren([
   IndexRoute,
   MobXRoute,
   ZustandRoute,
   JotaiRoute,
-  ValtioRoute
+  ValtioRoute,
+  TanStackRoute
 ]);
 
 declare module '@tanstack/react-router' {

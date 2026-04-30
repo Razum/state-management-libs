@@ -1,29 +1,19 @@
 import {
+  ApiOutlined,
   AppstoreOutlined,
+  DownOutlined,
   DeploymentUnitOutlined,
   ExperimentOutlined,
-  HomeOutlined,
   ShoppingOutlined
 } from '@ant-design/icons';
-import { Link, Outlet, useRouterState } from '@tanstack/react-router';
-import { App, Layout as AntdLayout, Menu, Typography } from 'antd';
+import { Link, Outlet } from '@tanstack/react-router';
+import { App, Dropdown, Layout as AntdLayout, Space, Typography } from 'antd';
 
 import styles from '@/components/layout/layout.module.css';
 
 const { Header, Content, Footer } = AntdLayout;
 
-const getSelectedNavKey = (pathname: string) => {
-  if (pathname === '/') {
-    return '/';
-  }
-  const first = pathname.split('/').find(Boolean);
-  return first ? `/${first}` : '/';
-};
-
 export const Layout = () => {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const selectedKey = getSelectedNavKey(pathname);
-
   return (
     <App>
       <AntdLayout className={styles.layout}>
@@ -37,38 +27,47 @@ export const Layout = () => {
                 State Playground
               </Typography.Text>
             </Link>
-            <Menu
+            <Dropdown
               className={styles.nav}
-              items={[
-                {
-                  icon: <HomeOutlined />,
-                  key: '/',
-                  label: <Link to="/">Home</Link>
-                },
-                {
-                  icon: <ExperimentOutlined />,
-                  key: '/jotai',
-                  label: <Link to="/jotai">Jotai</Link>
-                },
-                {
-                  icon: <ShoppingOutlined />,
-                  key: '/zustand',
-                  label: <Link to="/zustand">Zustand</Link>
-                },
-                {
-                  icon: <AppstoreOutlined />,
-                  key: '/mobx',
-                  label: <Link to="/mobx">MobX</Link>
-                },
-                {
-                  icon: <DeploymentUnitOutlined />,
-                  key: '/valtio',
-                  label: <Link to="/valtio">Valtio</Link>
-                }
-              ]}
-              mode="horizontal"
-              selectedKeys={[selectedKey]}
-            />
+              menu={{
+                items: [
+                  {
+                    icon: <ExperimentOutlined />,
+                    key: 'jotai',
+                    label: <Link to="/jotai">Jotai</Link>
+                  },
+                  {
+                    icon: <ShoppingOutlined />,
+                    key: 'zustand',
+                    label: <Link to="/zustand">Zustand</Link>
+                  },
+                  {
+                    icon: <AppstoreOutlined />,
+                    key: 'mobx',
+                    label: <Link to="/mobx">MobX</Link>
+                  },
+                  {
+                    icon: <DeploymentUnitOutlined />,
+                    key: 'valtio',
+                    label: <Link to="/valtio">Valtio</Link>
+                  },
+                  {
+                    icon: <ApiOutlined />,
+                    key: 'tanstack',
+                    label: <Link to="/tanstack">TanStack</Link>
+                  }
+                ],
+                selectable: true
+              }}
+              trigger={['click']}
+            >
+              <button className={styles.dropdownTrigger} type="button">
+                <Space size={6}>
+                  <span>Projects</span>
+                  <DownOutlined />
+                </Space>
+              </button>
+            </Dropdown>
           </div>
         </Header>
 

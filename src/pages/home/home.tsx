@@ -1,5 +1,6 @@
 import jotaiImage from '@/assets/images/jotai.png';
 import mobxImage from '@/assets/images/mobx.png';
+import tanstackImage from '@/assets/images/tanstack.png';
 import valtioImage from '@/assets/images/valtio.png';
 import zustandImage from '@/assets/images/zustand.png';
 import LinkCard from '@/pages/home/components/link-card';
@@ -54,6 +55,15 @@ const Home = () => (
           image={valtioImage}
           status="implemented"
           title="Valtio"
+        />
+      </Col>
+      <Col lg={6} sm={12} xs={24}>
+        <LinkCard
+          description="TanStack-focused playground scaffold. Placeholder route until a demo is added."
+          href="/tanstack"
+          image={tanstackImage}
+          status="implemented"
+          title="TanStack"
         />
       </Col>
     </Row>

@@ -70,26 +70,29 @@
 }
 
 .nav {
-  min-width: 0;
-  flex: 1;
-  max-width: 32rem;
-  background: transparent !important;
-  border-bottom: none !important;
-  line-height: 4rem;
-  color: rgba(255, 255, 255, 0.65);
+  margin-inline-start: auto;
 }
 
-.nav :global(.ant-menu-item) {
-  color: rgba(255, 255, 255, 0.7) !important;
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  border: 1px solid color-mix(in srgb, var(--ant-color-border-secondary) 70%, transparent);
+  border-radius: var(--ant-border-radius);
+  padding: 0 0.75rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
 }
 
-.nav :global(.ant-menu-item) a,
-.nav :global(.ant-menu-item) a:hover {
-  color: inherit;
+.dropdownTrigger:hover {
+  color: #fff;
+  border-color: color-mix(in srgb, var(--ant-color-primary) 65%, var(--ant-color-border-secondary));
 }
 
-.nav :global(.ant-menu-item-selected) {
-  color: var(--ant-color-primary) !important;
+.dropdownTrigger:focus-visible {
+  outline: 2px solid var(--ant-color-primary);
+  outline-offset: 2px;
 }
 
 .content {
