@@ -1,0 +1,31 @@
+.chartCard {
+  border-radius: 0.75rem;
+}
+
+.chartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.chartTitle {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.chartTypeSelect {
+  width: 7.5rem;
+}
+
+.chartContainer {
+  min-height: 20rem;
+}
+
+@media (max-width: 48rem) {
+  .chartContainer {
+    min-height: 16.25rem;
+  }
+}

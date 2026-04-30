@@ -1,5 +1,6 @@
 import {
   AppstoreOutlined,
+  DeploymentUnitOutlined,
   ExperimentOutlined,
   HomeOutlined,
   ShoppingOutlined
@@ -60,7 +61,7 @@ export const Layout = () => {
                   label: <Link to="/mobx">MobX</Link>
                 },
                 {
-                  icon: <AppstoreOutlined />,
+                  icon: <DeploymentUnitOutlined />,
                   key: '/valtio',
                   label: <Link to="/valtio">Valtio</Link>
                 }

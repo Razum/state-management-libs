@@ -17,6 +17,7 @@
     "@tanstack/react-form": "^1.29.1",
     "@tanstack/react-router": "^1.168.23",
     "antd": "^6.3.6",
+    "chart.js": "^4.5.1",
     "clsx": "^2.1.1",
     "image-js": "^1.5.0",
     "jotai": "^2.19.1",
